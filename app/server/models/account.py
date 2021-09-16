@@ -24,7 +24,7 @@ class UpdateAccountModel(BaseModel):
     firstname: Optional[str]
     lastname: Optional[str]
     email: Optional[EmailStr]
-    paswword: Optional[str]
+    password: Optional[str]
 
     class Config:
         schema_extra = {

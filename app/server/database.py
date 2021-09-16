@@ -2,7 +2,7 @@ import motor.motor_asyncio
 from bson.objectid import ObjectId
 from decouple import config
 
-MONGO_DETAILS = config('MONGO_DETAILS') # read environment variable.
+MONGO_DETAILS = config('MONGO_DETAILS')  # read environment variable.
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS, tls=True, tlsAllowInvalidCertificates=True)
 
@@ -10,17 +10,18 @@ database = client.accounts
 
 accounts_collection = database.get_collection("dev")
 
-# helpers
 
+# helpers
 
 def accounts_helper(accounts) -> dict:
     return {
         "id": str(accounts["_id"]),
-        "firsname": accounts["firstname"],
+        "firstname": accounts["firstname"],
         "lastname": accounts["lastname"],
         "email": accounts["email"],
         "password": accounts["password"],
     }
+
 
 # Retrieve all accounts present in the database
 async def retrieve_accounts():

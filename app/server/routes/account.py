@@ -26,6 +26,7 @@ async def add_account_data(account: AccountSchema = Body(...)):
     new_account = await add_account(account)
     return ResponseModel(new_account, "Account added successfully.")
 
+
 # GET accounts
 
 @router.get("/", response_description="Accounts retrieved")
@@ -35,6 +36,7 @@ async def get_accounts():
         return ResponseModel(accounts, "Accounts data retrieved successfully")
     return ResponseModel(accounts, "Empty list returned")
 
+
 # GET account by ID
 
 @router.get("/{id}", response_description="Account data retrieved")
@@ -43,6 +45,7 @@ async def get_account_data(id):
     if account:
         return ResponseModel(account, "Account data retrieved successfully")
     return ErrorResponseModel("An error occurred.", 404, "Account doesn't exist.")
+
 
 # Update account by ID
 
@@ -60,6 +63,7 @@ async def update_account_data(id: str, req: UpdateAccountModel = Body(...)):
         404,
         "There was an error updating the account data.",
     )
+
 
 # Delete an account
 
